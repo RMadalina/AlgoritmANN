@@ -9,21 +9,11 @@ import java.util.Set;
 /**
  * Implementeaza algoritmul pentru determinarea simbolurilor anulabile ale unei gramatici
  * 
- * @author Radu Madalina
- *
- */
-/**
- * 
  * Algoritmul ANN
- *Intrare: gramatica G = (N,Σ,P,S ) independentă de context
- *Ieşire: mulţimea N ann a simbolurilor anulabile
- *Metoda:
- *P1. { ( ) } 0 0 M = A∈ N / ∃ A→ε ∈ P , i :=
- *P2. Ni = Ni ∪{A∈N / ∃ ∈Ni∗ (A→ )∈P}
- *+1 α astfel încât α
- *P3. Dacă Ni+1 ≠ Ni atunci i := i +1 şi mergi la P2.
- *P4. , STOP.
- *
+ * Intrare: gramatica G = (N,Σ,P,S ) independentă de context
+ * Ieşire: mulţimea N a simbolurilor anulabile
+ * 
+ * @author Radu Madalina
  */
 public class AlgoritmANN {
 
