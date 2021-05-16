@@ -7,10 +7,10 @@ import java.util.LinkedHashSet;
 import java.util.Set;
 
 /**
- * Implementeaza algoritmul pentru determinarea simbolurilor anulabile ale unei gramatici
+ * Implementeaza algoritmul pentru determinarea simbolurilor anulabile ale unei
+ * gramatici
  * 
- * Algoritmul ANN
- * Intrare: gramatica G = (N,Σ,P,S ) independentă de context
+ * Algoritmul ANN Intrare: gramatica G = (N,Σ,P,S ) independentă de context
  * Ieşire: mulţimea N a simbolurilor anulabile
  * 
  * @author Radu Madalina
@@ -24,6 +24,7 @@ public class AlgoritmANN {
 
 	/**
 	 * Constructor cu parametri
+	 * 
 	 * @param gramatica gramatica pe care se aplica algoritmul
 	 */
 	public AlgoritmANN(Gramatica gramatica) {
@@ -31,14 +32,15 @@ public class AlgoritmANN {
 	}
 
 	/**
-	 * Determina multimea N0 din algoritmul ANN 
+	 * Determina multimea N0 din algoritmul ANN
+	 * 
 	 * @return multimea simbolurilor care produc Epsilon
 	 */
 	public Set<String> determinaN0() {
 		Set<String> N0 = new LinkedHashSet<String>();
 		for (Productie productie : gramatica.getProductii()) {
 			String alfa = productie.getParteaDreapta();
-			if (alfa.isEmpty()) {				
+			if (alfa.isEmpty()) {
 				System.out.println("Productia implicata:" + productie);
 				N0.add(productie.getParteaStanga());
 			}
@@ -47,10 +49,12 @@ public class AlgoritmANN {
 	}
 
 	/**
-	 * Determina multimea NiPlus1 din algoritmul ANN 
+	 * Determina multimea NiPlus1 din algoritmul ANN
+	 * 
 	 * @return multimea simbolurilor care produc Epsilon la pasul i+1
 	 * @param Ni multimea simbolurilor care produc Epsilon la pasul i
-	 * @return multimea simbolurilor din algoritmul ANN care produc Epsilon la pasul i+1
+	 * @return multimea simbolurilor din algoritmul ANN care produc Epsilon la pasul
+	 *         i+1
 	 */
 	public Set<String> determinaNiPlus1(Set<String> Ni) {
 		Set<String> NiPlus1 = new LinkedHashSet<String>();
@@ -61,23 +65,22 @@ public class AlgoritmANN {
 			boolean verifica = true;
 			for (int i = 0; i < alfa.length(); i++) {
 				String simbol = alfa.charAt(i) + "";
-				if ( !Ni.contains(simbol)) {
+				if (!Ni.contains(simbol)) {
 					verifica = false;
 					break;
 				}
 			}
 			if (verifica && !NiPlus1.contains(productie.getParteaStanga())) {
-				System.out.println("Elimin "+ productie.getParteaStanga() +". Productia implicata:" + productie);
+				System.out.println("Elimin " + productie.getParteaStanga() + ". Productia implicata:" + productie);
 				NiPlus1.add(productie.getParteaStanga());
 			}
 		}
 		return NiPlus1;
 	}
 
-	
-
 	/**
 	 * Calculeaza multimea simbolurilor anulabile conform algoritmului ANN
+	 * 
 	 * @param debug flag care afiseaza informatii de debug daca este true
 	 * @return multimea simbolurilor anulabile
 	 */
@@ -103,27 +106,26 @@ public class AlgoritmANN {
 		return Ni;
 	}
 
-	
 	public static void main(String[] args) {
 
 		String simbolulInitial = "S";
 
 		String neterminale[] = { "S", "A", "B", "C" };
-		String terminale[] = { "a", "b"};
+		String terminale[] = { "a", "b" };
 
 		Gramatica g = new Gramatica(neterminale, terminale, simbolulInitial);
 
-		g.adaugaProductie("S", "ABC"); 
+		g.adaugaProductie("S", "ABC");
 		g.adaugaProductie("S", "AA"); // S ->AA
 		g.adaugaProductie("S", "BC"); // S ->BC
 		g.adaugaProductie("S", "AC"); // S ->AC
 
 		g.adaugaProductie("A", "aA");
 		g.adaugaProductie("A", "BC");
-		
+
 		g.adaugaProductie("B", "aCA");
 		g.adaugaProductie("B", "CC");
-		
+
 		g.adaugaProductie("C", "");
 		g.adaugaProductie("C", "ab");
 		System.out.println(g);

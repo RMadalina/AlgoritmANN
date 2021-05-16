@@ -8,11 +8,14 @@ import java.util.Set;
 /**
  * Implementeaza conceptul de Gramatica G = (N,Σ,S,P)
  * <ul>
- * <li>N - este un alfabet ale cărui elemente se numesc neterminale şi se notează cu litere mari</li> 
- * <li>Σ - este un alfabet ale cărui elemente se numesc terminale şi se notează cu litere mici </li>
+ * <li>N - este un alfabet ale cărui elemente se numesc neterminale şi se
+ * notează cu litere mari</li>
+ * <li>Σ - este un alfabet ale cărui elemente se numesc terminale şi se notează
+ * cu litere mici</li>
  * <li>S - Simbolul initial</li>
  * <li>P- Multimea regulilor de productie</li>
  * </ul>
+ * 
  * @author Radu Madalina
  *
  */

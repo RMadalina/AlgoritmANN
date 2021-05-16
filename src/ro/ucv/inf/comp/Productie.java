@@ -3,8 +3,8 @@
 package ro.ucv.inf.comp;
 
 /**
- * Implementeaza conceptul de productie a unei gramatici formale:
- * parteaStanga -> parteaDrepta
+ * Implementeaza conceptul de productie a unei gramatici formale: parteaStanga
+ * -> parteaDrepta
  * 
  * @author Radu Madalina
  *
